@@ -8,8 +8,8 @@ import (
 )
 
 const (
-	smtpAuthAddress   = "smtp.gmail.com"
-	smtpServerAddress = "smtp.gmail.com:587"
+	SMTPAUTHADDRESS   = "smtp.gmail.com"
+	SMTPSERVERADDRESS = "smtp.gmail.com:587"
 )
 
 type SenderGmail struct {
@@ -55,9 +55,9 @@ func (sender *SenderGmail) SendEmail(subject string, body string, to []string, c
 
 	}
 
-	smtpAuth := smtp.PlainAuth("", sender.fromEmailAddress, sender.fromEmailPassword, smtpAuthAddress)
+	smtpAuth := smtp.PlainAuth("", sender.fromEmailAddress, sender.fromEmailPassword, SMTPAUTHADDRESS)
 
-	err := e.Send(smtpServerAddress, smtpAuth)
+	err := e.Send(SMTPSERVERADDRESS, smtpAuth)
 
 	return err
 }
